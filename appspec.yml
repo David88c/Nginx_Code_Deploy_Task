@@ -4,6 +4,10 @@ files:
   - source: /
     destination: /opt/nginx
 hooks:
+  ApplicationStop:
+    - location: stop_nginx.sh
+      timeout: 300
+      runas: root
   BeforeInstall:
     - location: install_docker.sh
       timeout: 300
