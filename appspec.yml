@@ -2,17 +2,13 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /opt/nginx
+    destination: /tmp
 hooks:
-  ApplicationStop:
-    - location: stop_nginx.sh
-      timeout: 300
-      runas: root
   BeforeInstall:
-    - location: install_docker.sh
+    - location: scripts/install_nginx.sh
       timeout: 300
       runas: root
   AfterInstall:
-    - location: start_nginx.sh
+    - location: scripts/start_nginx.sh
       timeout: 300
       runas: root
